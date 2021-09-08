@@ -6,12 +6,37 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+## Example 
+
+```{r}
+library(gapminder)
+
+#data prep/transformational code - don't worry about this - for now!
+gap_bit <- subset(gapminder, year == 2007 & continent != "Oceania")
+gap_bit <- gap_bit[with(gap_bit, order(continent, -1 * pop)), ]
+
+
+plot <- ggplot(gap_bit, mapping = aes(x = gdpPercap, y = lifeExp, color = continent, size = pop))+
+  scale_x_log10(limits = c(150, 115000)) + ylim(c(16, 96))+
+  geom_point(pch = 21, color = 'grey20', show.legend = FALSE) +
+  scale_size_area(max_size = 40)+
+  facet_wrap(~ continent) + 
+  coord_fixed(ratio = 1/43) +
+  aes(fill = country) + 
+  scale_fill_manual(values = country_colors) +
+  theme_bw() + 
+  theme(strip.text = element_text(size = rel(1.1)))
+
+plot
+```
+
 
 ## Learning Activity: Read Code
 
 For this activity, I want you, as a group, to deconstruct this code into multiple code chunks. Identify what each line does and feel free to make modifications. Reminder that the ggplot cheatsheet (https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf) is a great resource for understanding the ggplot syntax. 
 
 Note this visualization was created by Cedric Scherer: https://www.cedricscherer.com/2019/05/17/the-evolution-of-a-ggplot-ep.-1/
+
 
 ```{r read this}
 ## packages
