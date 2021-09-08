@@ -45,13 +45,13 @@ Note this visualization was created by Cedric Scherer: https://www.cedricscherer
 
 library(tidyverse)
 library(ggsci)
-library(showtext)
+#library(showtext)
 library(devtools)
 
 ## load fonts
-font_add_google("Poppins", "Poppins")
-font_add_google("Roboto Mono", "Roboto Mono")
-showtext_auto()
+#font_add_google("Poppins", "Poppins")
+#font_add_google("Roboto Mono", "Roboto Mono")
+#showtext_auto()
 
 ## get data
 devtools::source_gist("https://gist.github.com/Z3tt/301bb0c7e3565111770121af2bd60c11")
